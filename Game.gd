@@ -27,11 +27,11 @@ func _ready():
 	randomize()
 	# set up end dialog
 	var resetBtn = EndDialog.get_ok()
-	var quitBtn = EndDialog.get_cancel()
+	var mainMenuBtn = EndDialog.get_cancel()
 	resetBtn.set_text("Restart")
 	resetBtn.connect("pressed", self, "restart")
-	quitBtn.set_text("Quit")
-	quitBtn.connect("pressed", self, "quit")
+	mainMenuBtn.set_text("Main Menu")
+	mainMenuBtn.connect("pressed", self, "main_menu")
 	# Set up score label
 	var dynamic_font = DynamicFont.new()
 	dynamic_font.font_data = load("res://assets/arial.ttf")
@@ -211,5 +211,5 @@ func restart():
 	GameVars.playing = true
 	set_process(true)
 
-func quit():
-	get_tree().quit()
+func main_menu():
+	get_tree().change_scene("res://Main Menu.tscn")
