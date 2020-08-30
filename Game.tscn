@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/Sand.png" type="Texture" id=1]
+[ext_resource path="res://Rock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Game.gd" type="Script" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ProgressBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Pickup.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/Highscore.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/Death.wav" type="AudioStream" id=8]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="TrashTimer" type="Timer" parent="."]
+wait_time = 1.25
+autostart = true
+
+[node name="SeagullTimer" type="Timer" parent="."]
+wait_time = 1.25
+autostart = true
+
+[node name="CrabTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="SeaUrchinTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -27.876
+
+[node name="HighscoreSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -20.371
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -5.361
+
+[node name="Sand" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Rock" parent="." instance=ExtResource( 2 )]
+position = Vector2( 147, 141 )
+
+[node name="Rock2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 218, 339 )
+
+[node name="Rock3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 502, 474 )
+
+[node name="Rock4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 455, 89 )
+
+[node name="Rock5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 608, 223 )
+
+[node name="Rock6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 833, 457 )
+
+[node name="Rock7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 894, 97 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 5 )]
+margin_right = 320.0
+margin_bottom = 64.0
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 503.53, 281.709 )
+
+[node name="EndDialog" type="ConfirmationDialog" parent="."]
+margin_left = 408.708
+margin_top = 272.943
+margin_right = 608.708
+margin_bottom = 342.943
+window_title = "Game Over"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="TrashTimer" to="." method="add_trash"]
+[connection signal="timeout" from="SeagullTimer" to="." method="_on_SeagullTimer_timeout"]
+[connection signal="timeout" from="CrabTimer" to="." method="_on_CrabTimer_timeout"]
+[connection signal="timeout" from="SeaUrchinTimer" to="." method="_on_SeaUrchinTimer_timeout"]
