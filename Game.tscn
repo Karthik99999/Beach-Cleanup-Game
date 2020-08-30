@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/Sand.png" type="Texture" id=1]
 [ext_resource path="res://Rock.tscn" type="PackedScene" id=2]
@@ -8,6 +8,69 @@
 [ext_resource path="res://assets/Pickup.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/Highscore.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/Death.wav" type="AudioStream" id=8]
+[ext_resource path="res://icon.png" type="Texture" id=9]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="TileSet" id=5]
+0/name = "icon.png 0"
+0/texture = ExtResource( 9 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 1
+0/autotile/bitmask_mode = 0
+0/autotile/bitmask_flags = [  ]
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 32, 32 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
@@ -70,7 +133,7 @@ margin_right = 320.0
 margin_bottom = 64.0
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 503.53, 281.709 )
+position = Vector2( 500, 280 )
 
 [node name="EndDialog" type="ConfirmationDialog" parent="."]
 margin_left = 408.708
@@ -81,6 +144,12 @@ window_title = "Game Over"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 5 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -131063, 0, 0, -131062, 0, 0, -131061, 0, 0, -131060, 0, 0, -131059, 0, 0, -131058, 0, 0, -131057, 0, 0, -131056, 0, 0, -131055, 0, 0, -131054, 0, 0, -131053, 0, 0, -131052, 0, 0, -131051, 0, 0, -131050, 0, 0, -131049, 0, 0, -131048, 0, 0, -131047, 0, 0, -131046, 0, 0, -131045, 0, 0, -131044, 0, 0, -131043, 0, 0, -131042, 0, 0, -131041, 0, 0, -131040, 0, 0, -131039, 0, 0, -131038, 0, 0, -131037, 0, 0, -131036, 0, 0, -131035, 0, 0, -131034, 0, 0, -131033, 0, 0, -131032, 0, 0, -131031, 0, 0, -131030, 0, 0, -131029, 0, 0, -131028, 0, 0, -131027, 0, 0, -131026, 0, 0, -131025, 0, 0, -131024, 0, 0, -131023, 0, 0, -131022, 0, 0, -131021, 0, 0, -131020, 0, 0, -131019, 0, 0, -131018, 0, 0, -131017, 0, 0, -131016, 0, 0, -131015, 0, 0, -131014, 0, 0, -131013, 0, 0, -131012, 0, 0, -131011, 0, 0, -131010, 0, 0, -131009, 0, 0, -131008, 0, 0, -2, 0, 0, 65534, 0, 0, 64, 0, 0, 131070, 0, 0, 65600, 0, 0, 196606, 0, 0, 131136, 0, 0, 262142, 0, 0, 196672, 0, 0, 327678, 0, 0, 262208, 0, 0, 393214, 0, 0, 327744, 0, 0, 458750, 0, 0, 393280, 0, 0, 524286, 0, 0, 458816, 0, 0, 589822, 0, 0, 524352, 0, 0, 655358, 0, 0, 589888, 0, 0, 720894, 0, 0, 655424, 0, 0, 786430, 0, 0, 720960, 0, 0, 851966, 0, 0, 786496, 0, 0, 917502, 0, 0, 852032, 0, 0, 983038, 0, 0, 917568, 0, 0, 1048574, 0, 0, 983104, 0, 0, 1114110, 0, 0, 1048640, 0, 0, 1179646, 0, 0, 1114176, 0, 0, 1245182, 0, 0, 1179712, 0, 0, 1310718, 0, 0, 1245248, 0, 0, 1376254, 0, 0, 1310784, 0, 0, 1441790, 0, 0, 1376320, 0, 0, 1507326, 0, 0, 1441856, 0, 0, 1572862, 0, 0, 1507392, 0, 0, 1638398, 0, 0, 1572928, 0, 0, 1703934, 0, 0, 1638464, 0, 0, 1769470, 0, 0, 1704000, 0, 0, 1835006, 0, 0, 1769536, 0, 0, 1900542, 0, 0, 1835072, 0, 0, 1966078, 0, 0, 1900608, 0, 0, 2031614, 0, 0, 1966144, 0, 0, 2097150, 0, 0, 2031680, 0, 0, 2162686, 0, 0, 2097216, 0, 0, 2228222, 0, 0, 2162752, 0, 0, 2293758, 0, 0, 2228288, 0, 0, 2359294, 0, 0, 2293824, 0, 0, 2424830, 0, 0, 2359360, 0, 0, 2490366, 0, 0, 2424896, 0, 0, 2555902, 0, 0, 2555903, 0, 0, 2490368, 0, 0, 2490369, 0, 0, 2490370, 0, 0, 2490371, 0, 0, 2490372, 0, 0, 2490373, 0, 0, 2490374, 0, 0, 2490375, 0, 0, 2490376, 0, 0, 2490377, 0, 0, 2490378, 0, 0, 2490379, 0, 0, 2490380, 0, 0, 2490381, 0, 0, 2490382, 0, 0, 2490383, 0, 0, 2490384, 0, 0, 2490385, 0, 0, 2490386, 0, 0, 2490387, 0, 0, 2490388, 0, 0, 2490389, 0, 0, 2490390, 0, 0, 2490391, 0, 0, 2490392, 0, 0, 2490393, 0, 0, 2490394, 0, 0, 2490395, 0, 0, 2490396, 0, 0, 2490397, 0, 0, 2490398, 0, 0, 2490399, 0, 0, 2490400, 0, 0, 2490401, 0, 0, 2490402, 0, 0, 2490403, 0, 0, 2490404, 0, 0, 2490405, 0, 0, 2490406, 0, 0, 2490407, 0, 0, 2490408, 0, 0, 2490409, 0, 0, 2490410, 0, 0, 2490411, 0, 0, 2490412, 0, 0, 2490413, 0, 0, 2490414, 0, 0, 2490415, 0, 0, 2490416, 0, 0, 2490417, 0, 0, 2490418, 0, 0, 2490419, 0, 0, 2490420, 0, 0, 2490421, 0, 0, 2490422, 0, 0, 2490423, 0, 0, 2490424, 0, 0, 2490425, 0, 0, 2490426, 0, 0, 2490427, 0, 0, 2490428, 0, 0, 2490429, 0, 0, 2490430, 0, 0, 2490431, 0, 0, 2490432, 0, 0 )
 [connection signal="timeout" from="TrashTimer" to="." method="add_trash"]
 [connection signal="timeout" from="SeagullTimer" to="." method="_on_SeagullTimer_timeout"]
 [connection signal="timeout" from="CrabTimer" to="." method="_on_CrabTimer_timeout"]

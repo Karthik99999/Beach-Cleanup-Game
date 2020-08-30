@@ -207,6 +207,7 @@ func restart():
 	SeagullTimer.start()
 	CrabTimer.start()
 	SeaUrchinTimer.start()
+	player.global_position = Vector2(500, 280)
 	GameVars.playing = true
 	set_process(true)
 
